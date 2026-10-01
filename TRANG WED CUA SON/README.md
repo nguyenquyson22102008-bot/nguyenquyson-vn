@@ -27,6 +27,25 @@
   (giữ cửa sổ đen nhỏ đang mở khi xem; đóng nó là tắt server — không sao).
 - **Cách 2**: nhấp đúp thẳng `index.html` — chạy được đầy đủ mọi tính năng.
 
+## Triển khai lên Vercel
+1. Đưa toàn bộ thư mục dự án lên một repository GitHub.
+2. Trên Vercel, chọn **Add New → Project** rồi import repository đó.
+3. Chọn **Framework Preset: Other**, **Root Directory: `./`**, không cần build command;
+  cấu hình trong `vercel.json` đặt output là thư mục gốc.
+4. Chọn **Deploy**. Địa chỉ gốc `/` sẽ mở `trang-chu/index.html`.
+5. Giữ nguyên `auth.js` đang trỏ tới Google Apps Script; không đưa app password hoặc
+  key bí mật vào repository.
+
+Bản production hiện tại: [https://trang-web-cua-son.vercel.app](https://trang-web-cua-son.vercel.app)
+
+Các trang dùng URL có `index.html`, ví dụ `/gioi-thieu/index.html`. Không bật
+**Clean URLs**, vì guard đăng nhập đang dùng các đường dẫn này.
+
+> Lưu ý: Vercel đang phục vụ HTML tĩnh. Guard đăng nhập trong trình duyệt chỉ chặn
+> điều hướng thông thường; người khác vẫn có thể tải trực tiếp nội dung HTML. Không
+> dùng cách này để bảo vệ dữ liệu bí mật. Muốn giới hạn truy cập thật cần xác thực ở
+> phía máy chủ hoặc một dịch vụ auth.
+
 ## Hệ thống thành viên (lưu Google Sheet)
 - Các trang nội dung **yêu cầu đăng nhập** — chưa đăng nhập sẽ được đưa tới
   trang Đăng nhập, và sau khi đăng nhập xong tự quay lại đúng trang đang xem.
