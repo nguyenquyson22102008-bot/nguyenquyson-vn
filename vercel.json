@@ -1,0 +1,10 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "framework": null,
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "cleanUrls": false,
+    "redirects": [
+        { "source": "/", "destination": "/trang-chu/index.html", "permanent": false }
+    ]
+}
