@@ -2,16 +2,16 @@
 // ĐĂNG KÝ / ĐĂNG NHẬP — lưu thành viên vào Google Sheet
 // ============================================
 var PROTECTED_PAGES = [
-  "gioi-thieu/index.html",
-  "so-thich/index.html",
-  "blog/index.html",
-  "ky-niem/index.html",
-  "lien-he/index.html",
-  "mang-xa-hoi/index.html"
+  "gioi-thieu.html",
+  "so-thich.html",
+  "blog.html",
+  "ky-niem.html",
+  "lien-he.html",
+  "mang-xa-hoi.html"
 ];
 
 (function () {
-  const appRoot = new URL("../", document.currentScript.src);
+  const appRoot = new URL("./", document.currentScript.src);
 
   function appUrl(path) {
     return new URL(path, appRoot).href;
@@ -60,14 +60,14 @@ var PROTECTED_PAGES = [
 
   function requestedPage() {
     const next = new URLSearchParams(window.location.search).get("next");
-    return PROTECTED_PAGES.includes(next) ? next : "index.html";
+    return PROTECTED_PAGES.includes(next) ? next : "trang-chu.html";
   }
 
   function requireAuthentication() {
     const page = currentPage();
     if (PROTECTED_PAGES.includes(page) && !getUser()) {
       document.documentElement.style.visibility = "hidden";
-      window.location.replace(appUrl("dang-nhap/index.html?next=" + encodeURIComponent(page)));
+      window.location.replace(appUrl("dang-nhap.html?next=" + encodeURIComponent(page)));
       return true;
     }
     return false;
@@ -92,7 +92,7 @@ var PROTECTED_PAGES = [
       // Đăng xuất ở trang protected thì nhớ trang đó để đăng nhập xong quay lại
       var page = currentPage();
       var next = PROTECTED_PAGES.indexOf(page) !== -1 ? "?next=" + encodeURIComponent(page) : "";
-      window.location.href = appUrl("dang-nhap/index.html" + next);
+      window.location.href = appUrl("dang-nhap.html" + next);
     };
   }
 

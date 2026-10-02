@@ -5,6 +5,10 @@
     "outputDirectory": "dist",
     "cleanUrls": false,
     "redirects": [
-        { "source": "/", "destination": "/trang-chu/index.html", "permanent": false }
+        {
+            "source": "/",
+            "destination": "/trang-chu.html",
+            "permanent": false
+        }
     ]
 }

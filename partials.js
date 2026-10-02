@@ -1,6 +1,6 @@
 (function () {
     const scriptUrl = document.currentScript.src;
-    const appRoot = new URL("../", scriptUrl);
+    const appRoot = new URL("./", scriptUrl);
 
     async function loadPartial(name) {
         const slot = document.querySelector('[data-partial="' + name + '"]');
