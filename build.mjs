@@ -6,28 +6,29 @@ import { minify } from "html-minifier-terser";
 const root = process.cwd();
 const output = resolve(root, "dist");
 const publicPaths = [
-    "index.html",
-    "trang-chu",
-    "dang-nhap",
-    "gioi-thieu",
-    "so-thich",
-    "blog",
-    "ky-niem",
-    "lien-he",
-    "mang-xa-hoi",
-    "partials",
-    "style.css",
-    "space.js",
-    "script.js",
-    "auth.js",
-    "partials.js"
+    ["index.html", "index.html"],
+    ["trang-chu.html", "trang-chu.html"],
+    ["dang-nhap.html", "dang-nhap.html"],
+    ["gioi-thieu.html", "gioi-thieu.html"],
+    ["so-thich.html", "so-thich.html"],
+    ["blog.html", "blog.html"],
+    ["ky-niem.html", "ky-niem.html"],
+    ["lien-he.html", "lien-he.html"],
+    ["mang-xa-hoi.html", "mang-xa-hoi.html"],
+    ["media", "media"],
+    ["partials", "partials"],
+    ["style.css", "style.css"],
+    ["space.js", "space.js"],
+    ["script.js", "script.js"],
+    ["auth.js", "auth.js"],
+    ["partials.js", "partials.js"]
 ];
 
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 
-for (const path of publicPaths) {
-    await cp(join(root, path), join(output, path), { recursive: true });
+for (const [sourcePath, outputPath] of publicPaths) {
+    await cp(join(root, sourcePath), join(output, outputPath), { recursive: true });
 }
 
 async function minifyFiles(directory) {
